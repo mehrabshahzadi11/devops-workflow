@@ -1,0 +1,52 @@
+
+name: Linting-workflow
+on: 
+  push:
+    branches:
+        - develop
+  pull_request:
+    branches:
+        - develop
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repository
+        uses: actions/checkout@v4
+      - name: installing HTMLHint
+        run: npm install --save-dev HTMLHint
+      - name: Lint HTML Files
+        run: npx htmlhint "/*.html"
+      - name: installing styleLinter
+        run: npm install --save-dev stylelinter
+      - name: installing CSS Files
+        run: npx stylelint "/*.css"
+      - name: display package.json contents
+        run: cat package.json
+
+
+
+# name: linting-workflow
+# on:
+#   push:
+#     branches:
+#         - develop
+#   pull_request:
+#     branches:
+#         - develop
+# jobs:
+#   linting-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: clone repository or checkout repository
+#         uses: actions/checkout@v4
+#       - name: installing HTMLHint
+#         run: npm install --save-dev htmlhint
+#       - name: Lint HTML Files  
+#         run: npx htmlhint "/*.html"
+#       - name: install styleLint
+#         run: npm install --save-dev stylelint
+#       - name: Lint CSS Files
+#         run: npx stylelint "/*.css"
+#       - name: dipslay pacjkage.json contents
+#         run: cat package.json
